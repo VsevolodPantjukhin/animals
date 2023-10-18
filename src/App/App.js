@@ -3,17 +3,22 @@ import AnimalShow from '../components/AnimalShow/AnimalShow';
 
 import { useState } from 'react';
 
-const App = () => {
-  // const handleClick = () => {
-  //   console.log('button was clicked');
-  // };
+const getRandomAnimal = () => {
+  const animals = ['bird', 'cat', 'cow', 'dog', 'gator', 'horse'];
+  return animals[Math.floor(Math.random() * animals.length)];
+};
 
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [animals, setAnimals] = useState([]);
+
+  const handleClick = () => {
+    setAnimals([...animals, getRandomAnimal()]);
+  };
 
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>Add Animal</button>
-      {console.log(count)}
+      <button onClick={handleClick}>Add Animal</button>
+      <div>{animals}</div>
     </div>
   );
 };
